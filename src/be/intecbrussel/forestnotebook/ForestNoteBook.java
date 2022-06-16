@@ -3,8 +3,8 @@ package be.intecbrussel.forestnotebook;
 import be.intecbrussel.animals.*;
 import be.intecbrussel.plants.*;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ForestNoteBook {
 
@@ -43,8 +43,7 @@ public class ForestNoteBook {
 
 
         System.out.println("We have " + animalCount + " animals.");
-        animals.stream().limit(animalCount - 1)
-                .forEach(animal -> System.out.printf("%s, ", animal.getName()));
+        animals.stream().limit(animalCount - 1).forEach(animal -> System.out.printf("%s, ", animal.getName()));
         System.out.printf("%s.\n", animals.get(animalCount - 1).getName());
 
         System.out.println("These are our carnivores:");
@@ -56,6 +55,10 @@ public class ForestNoteBook {
     }
 
     public void addAnimal(Animal animal) {
+        if (animals.contains(animal)) {
+            System.out.println("we already have this one!");
+            return;
+        }
         animals.add(animal);
         if (animal instanceof Carnivore) {
             carnivores.add((Carnivore) animal);
@@ -68,20 +71,37 @@ public class ForestNoteBook {
     }
 
     public void addPlant(Plant plant) {
+        if (plants.contains(plant)) {
+            System.out.println("We already have this one!");
+            return;
+        }
         plants.add(plant);
         plantCount++;
     }
 
     public void sortAnimalsByName() {
+        animals.sort(Comparator.comparing(Animal::getName, String::compareToIgnoreCase));
     }
 
     public void sortPlantsByName() {
+        plants.sort(Comparator.comparing(Plant::getName, String::compareToIgnoreCase));
     }
 
     public void sortPlantsByColour() {
+        plants.sort(Comparator.comparing(Plant::getColour));
+    }
+
+    public void sortPlantsByHeight() {
+        plants.sort(Comparator.comparing(Plant::getHeight));
     }
 
     public void sortAnimalsByHeight() {
+        animals.sort(Comparator.comparing(Animal::getHeight));
+    }
+
+    public void sortAnimalsByDecibel() {
+        animals.stream().filter(a -> a.getDecibel() >= 50).sorted(Comparator.comparing(Animal -> Animal.getDecibel() * -1)).forEach(System.out::println);
+
     }
 
 }

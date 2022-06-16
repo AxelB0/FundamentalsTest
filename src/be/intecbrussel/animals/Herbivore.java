@@ -4,7 +4,7 @@ import be.intecbrussel.plants.Plant;
 
 import java.util.Set;
 
-public class Herbivore extends Animal{
+public class Herbivore extends Animal {
 
     private Set<Plant> plantDiet;
 
@@ -17,9 +17,11 @@ public class Herbivore extends Animal{
         super(name, weight, height, length);
     }
 
-    public void addPlantToDiet(Plant plant){}
+    public void addPlantToDiet(Plant plant) {
+    }
 
-    public void printDiet(){}
+    public void printDiet() {
+    }
 
     public Set<Plant> getPlantDiet() {
         return plantDiet;
@@ -31,8 +33,6 @@ public class Herbivore extends Animal{
 
     @Override
     public String toString() {
-        return "Herbivore{" +
-                "plantDiet=" + plantDiet +
-                "} " + super.toString();
+        return "Herbivore{" + "plantDiet=" + plantDiet + "} " + super.toString();
     }
 }

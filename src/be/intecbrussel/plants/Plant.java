@@ -1,5 +1,7 @@
 package be.intecbrussel.plants;
 
+import java.util.Objects;
+
 public class Plant {
     private String name;
     private double height;
@@ -39,4 +41,16 @@ public class Plant {
         return "Plant{" + "name='" + name + '\'' + ", height=" + height + ", colour=" + colour + '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Plant plant = (Plant) o;
+        return Objects.equals(name, plant.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
 }

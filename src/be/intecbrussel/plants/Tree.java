@@ -22,8 +22,6 @@ public class Tree extends Plant {
 
     @Override
     public String toString() {
-        return "Tree{" +
-                "leaftype=" + leaftype +
-                "} " + super.toString();
+        return getName() + " Tree{" + "leaftype=" + leaftype + "} " + super.toString();
     }
 }
