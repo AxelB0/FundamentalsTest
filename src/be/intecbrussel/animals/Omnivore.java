@@ -2,11 +2,12 @@ package be.intecbrussel.animals;
 
 import be.intecbrussel.plants.Plant;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Omnivore extends Animal {
 
-    private Set<Plant> plantDiet;
+    private Set<Plant> plantDiet = new HashSet<Plant>();
     private double maxFoodSize;
 
     public Omnivore(String name) {
@@ -36,6 +37,7 @@ public class Omnivore extends Animal {
     }
 
     public void addPlantToDiet(Plant plant) {
+        plantDiet.add(plant);
     }
 
     @Override
