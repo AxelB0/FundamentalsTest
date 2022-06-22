@@ -4,14 +4,13 @@ import be.intecbrussel.animals.*;
 import be.intecbrussel.plants.*;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class ForestNoteBook {
 
     private List<Animal> animals = new ArrayList<Animal>();
     private List<Plant> plants = new ArrayList<Plant>();
     private List<Carnivore> carnivores = new ArrayList<Carnivore>();
-    private List<Omnivore> omnivores = new ArrayList<Omnivore>();
+    private List<Omnivore> omnivores = new ArrayList<Animal>();
     private List<Herbivore> herbivores = new ArrayList<Herbivore>();
     private int plantCount;
     private int animalCount;
@@ -20,7 +19,7 @@ public class ForestNoteBook {
         return carnivores;
     }
 
-    public List<Omnivore> getOmnivores() {
+    public List<Animal> getOmnivores() {
         return omnivores;
     }
 
@@ -59,14 +58,35 @@ public class ForestNoteBook {
             System.out.println("we already have this one!");
             return;
         }
+
         animals.add(animal);
+
+        if (animal instanceof Omnivore) {
+            addAnimalToSubList(omnivores, animal);
+            return;
+        }
+
+        animalCount++;
+
         if (animal instanceof Carnivore) {
             carnivores.add((Carnivore) animal);
-        } else if (animal instanceof Omnivore) {
-            omnivores.add((Omnivore) animal);
-        } else if (animal instanceof Herbivore) {
-            herbivores.add((Herbivore) animal);
+            return;
         }
+
+
+        if (animal instanceof Herbivore) {
+            herbivores.add((Herbivore) animal);
+            return;
+        }
+    }
+
+    private void addAnimalToSubList(List<? extends Animal> sublist, Animal animal) {
+//        sublist.add(animal); would be nice if it would work
+
+        if (animal instanceof Omnivore) {
+            return;
+        }
+
         animalCount++;
     }
 
@@ -100,7 +120,10 @@ public class ForestNoteBook {
     }
 
     public void sortAnimalsByDecibel() {
-        animals.stream().filter(a -> a.getDecibel() >= 50).sorted(Comparator.comparing(Animal -> Animal.getDecibel() * -1)).forEach(System.out::println);
+        animals.stream()
+                .filter(a -> a.getDecibel() >= 50)
+                .sorted(Comparator.comparingInt((Animal animal) -> animal.getDecibel()).reversed())
+                .forEach(System.out::println);
 
     }
 

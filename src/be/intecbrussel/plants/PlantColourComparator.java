@@ -17,7 +17,7 @@ public class PlantColourComparator implements Comparator<Colour> {
         if (o2 == null) {
             return 1;
         }
-        return o1.compareTo(o2);
+        return o1.name().compareToIgnoreCase(o2.name());
     }
 
 }

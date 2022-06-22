@@ -23,6 +23,7 @@ public class Herbivore extends Animal {
     }
 
     public void printDiet() {
+        //???????????? where is waldo?
     }
 
     public Set<Plant> getPlantDiet() {

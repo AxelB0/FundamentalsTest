@@ -21,10 +21,10 @@ public class app {
         plant4.setColour(Colour.YELLOW);
         plant5.setColour(Colour.BROWN);
 
-        Herbivore herbivore1 = new Herbivore("Gorilla", 170, 1.6, 0.5);
+        Herbivore herbivore1 = new Herbivore("Harambe", 170, 1.6, 0.5);
         Herbivore herbivore2 = new Herbivore("Rabbit", 2, 0.3, 0.2);
         Herbivore herbivore3 = new Herbivore("Elephant", 4000, 5.5, 2.9);
-        Herbivore herbivore4 = new Herbivore("Gorilla", 21, 12, 12);
+        Herbivore herbivore4 = new Herbivore("Harambe", 21, 12, 12);
         Carnivore carnivore1 = new Carnivore("Snek", 59, 0.4, 6);
         Carnivore carnivore2 = new Carnivore("Lion", 190, 1, 2.3);
         Carnivore carnivore3 = new Carnivore("Frog", 0.22, 0.06, 0.09);
